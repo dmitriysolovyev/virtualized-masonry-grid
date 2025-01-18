@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { useState, useEffect, Suspense } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom'
 import './App.css';
 import { Pexels } from './external/pexels/pexels';
-import { VirtualPhotoGrid } from './model/VirtualPhotoGrid';
-
+import { VirtualPhotoGrid } from './model/virtualPhotoGrid';
+import MainRoutes from './pages/Routes'
 // function App() {
 //   const [count, setCount] = useState(0)
 
@@ -51,7 +50,14 @@ const App = () => {
     }
     fetchData();
   }, []);
-  // ...
+
+  return (
+    <Suspense>
+      <Router>
+        <MainRoutes />
+      </Router>
+    </Suspense>
+  )
 };
 
 
