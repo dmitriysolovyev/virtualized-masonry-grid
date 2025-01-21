@@ -1,17 +1,13 @@
-import { lazy } from 'react'
+import { lazy } from "react";
 
 export const ROUTES = {
-  PHOTOS_GRID: '/photos/grid',
-  PHOTOS_DETAILED_VIEW: '/photos/detailed'
-}
+  PHOTOS_GRID: "/photos/grid",
+  PHOTOS_DETAILED_VIEW: "/photos/detailed",
+};
 
-const Photos = lazy(
-  () => import('./Photos')
-)
+const Photos = lazy(() => import("./Photos"));
 
-const PhotosDetails = lazy(
-  () => import('./PhotoDetails')
-)
+const PhotosDetails = lazy(() => import("./PhotoDetails"));
 
 export const routes = [
   {
@@ -19,7 +15,7 @@ export const routes = [
     component: Photos,
   },
   {
-    path: ROUTES.PHOTOS_DETAILED_VIEW,
+    path: `${ROUTES.PHOTOS_DETAILED_VIEW}/:id`,
     component: PhotosDetails,
   },
-]
+];

@@ -1,41 +1,36 @@
 export type GridItemSize = {
-  width: number
-  height: number
-}
+  width: number;
+  height: number;
+};
 
 export type GridItemPosition = {
   left: number;
   top: number;
-}
+};
 
 export type GridItemContent = {
   id: number;
-} & GridItemSize
-
+} & GridItemSize;
 
 export class VirtualGridItem<T extends GridItemContent> {
   private readonly _size: GridItemSize;
   private readonly _position: GridItemPosition;
 
-  constructor(private readonly _content: T, width: number) {
+  constructor(
+    private readonly _content: T,
+    width: number,
+  ) {
     const coef = width / this._content.width;
-    
+
     this._size = {
       width,
-      height: Math.round(this._content.height * coef)
+      height: Math.round(this._content.height * coef),
     };
 
     this._position = {
       left: 0,
-      top: 0
+      top: 0,
     };
-
-    console.log({
-      VirtualGridItem: '',
-      _content,
-      width,
-      size: this._size,
-    });
   }
 
   get id() {
@@ -60,5 +55,9 @@ export class VirtualGridItem<T extends GridItemContent> {
 
   get top(): number {
     return this._position.top;
+  }
+
+  get content(): T {
+    return this._content;
   }
 }
